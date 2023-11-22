@@ -3,6 +3,9 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var paused = false
 
+func getFunction():
+	return position
+
 func _ready():
 	direction.y = [1, -1].pick_random()
 	direction.x = [1, -1].pick_random()

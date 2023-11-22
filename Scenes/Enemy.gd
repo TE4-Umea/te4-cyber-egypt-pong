@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 300.0
+@export var speed : float = 1000.0
 var paused = false
 
 func _physics_process(delta):
@@ -16,8 +16,9 @@ func _physics_process(delta):
 		move_and_slide()
 
 func get_axis(up, down):
-	if Input.is_action_pressed(up): return -1
-	elif Input.is_action_pressed(down): return 1
+	var ball_position = get_parent().get_node("Ball").position
+	if position.y < ball_position.y: return 1
+	elif position.y > ball_position.y: return -1
 
 
 func _on_area_2d_body_entered(body):

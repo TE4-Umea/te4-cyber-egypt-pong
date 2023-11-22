@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1jdun1b61cjp"]
+[gd_scene load_steps=10 format=3 uid="uid://d1jdun1b61cjp"]
 
 [ext_resource type="Script" path="res://Scenes/World.gd" id="1_i0ao4"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Paddle.tscn" id="1_lert0"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_cqfwg"]
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball.tscn" id="3_62d1g"]
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="4_sx57s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
 size = Vector2(1184, 16)
@@ -154,22 +155,23 @@ offset_right = 704.0
 offset_bottom = 520.0
 text = "MAIN MENU"
 
-[node name="p1" parent="." instance=ExtResource("1_lert0")]
+[node name="player" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(72, 320)
 collision_layer = 5
 collision_mask = 5
 
-[node name="p2" parent="." instance=ExtResource("1_lert0")]
+[node name="Enemy" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(1080, 320)
 collision_layer = 5
 collision_mask = 5
-side = "p2"
+script = ExtResource("4_sx57s")
+speed = 1000.0
 
 [node name="Ball" parent="." instance=ExtResource("3_62d1g")]
 position = Vector2(576, 320)
 
-[connection signal="pauseSignal" from="." to="p1" method="_on_world_pause_signal"]
-[connection signal="pauseSignal" from="." to="p2" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="player" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
