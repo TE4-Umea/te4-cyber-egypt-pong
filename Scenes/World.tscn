@@ -176,6 +176,8 @@ position = Vector2(576, 320)
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
 [connection signal="body_entered" from="Kanye" to="." method="_on_kanye_body_entered"]
+[connection signal="body_entered" from="Kanye" to="Enemy" method="_on_success"]
 [connection signal="body_entered" from="!Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="!Left" to="Enemy" method="_on_fail"]
 [connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]
