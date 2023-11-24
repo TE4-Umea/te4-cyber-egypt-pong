@@ -168,9 +168,6 @@ side = "p2"
 [node name="Ball" parent="." instance=ExtResource("3_62d1g")]
 position = Vector2(576, 320)
 
-[connection signal="pauseSignal" from="." to="p1" method="_on_world_pause_signal"]
-[connection signal="pauseSignal" from="." to="p2" method="_on_world_pause_signal"]
-[connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
 [connection signal="body_entered" from="Kanye" to="." method="_on_kanye_body_entered"]

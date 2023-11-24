@@ -1,9 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://darcr8ymhfsa1"]
+[gd_scene load_steps=15 format=3 uid="uid://darcr8ymhfsa1"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="1_spygn"]
+[ext_resource type="Texture2D" uid="uid://bfjcevy25yrp8" path="res://Sprites/startmenu.png" id="3_uo5oj"]
 
-[node name="Control" type="Control"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiqy3"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 0, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2bu"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 216, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qavay"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 432, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxxji"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 648, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w25mi"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 864, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1014m"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 1080, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip2jr"]
+atlas = ExtResource("3_uo5oj")
+region = Rect2(0, 1296, 384, 216)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lvoi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiqy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qavay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxxji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w25mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1014m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip2jr")
+}],
+"loop": true,
+"name": &"StartMenu",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1nmo"]
+bg_color = Color(0.313726, 1, 0, 0.352941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_265pa"]
+bg_color = Color(0.313726, 1, 0, 0.352941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4ho8"]
+bg_color = Color(0.313726, 1, 0, 0.352941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d81f4"]
+bg_color = Color(0.313726, 1, 0, 0.352941)
+
+[node name="StartMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,29 +81,115 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_46qfw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("1_spygn")
+[node name="AnimationContainer" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = -576.0
+offset_top = -320.112
+offset_right = 576.0
+offset_bottom = 327.888
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 128.0
-offset_right = 768.0
-offset_bottom = 320.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationContainer"]
+position = Vector2(576, 323)
+scale = Vector2(3.00926, 3.00926)
+sprite_frames = SubResource("SpriteFrames_5lvoi")
+animation = &"StartMenu"
+frame_progress = 0.847486
+
+[node name="PONG" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = -192.0
+offset_top = -192.112
+offset_right = 192.0
+offset_bottom = -0.112
 theme_override_font_sizes/font_size = 80
 text = "PONG"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 448.0
-offset_right = 704.0
-offset_bottom = 512.0
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = -128.0
+offset_top = -33.112
+offset_right = 128.0
+offset_bottom = 30.888
+theme_override_styles/hover = SubResource("StyleBoxFlat_l1nmo")
 text = "PLAY"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = -128.0
+offset_top = 38.888
+offset_right = 128.0
+offset_bottom = 103.888
+theme_override_styles/hover = SubResource("StyleBoxFlat_265pa")
+text = "Continue
+"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = -192.0
+offset_top = 114.888
+offset_right = -155.0
+offset_bottom = 145.888
+theme_override_styles/hover = SubResource("StyleBoxFlat_p4ho8")
+text = "Exit
+"
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = 152.0
+offset_top = 111.888
+offset_right = 222.0
+offset_bottom = 142.888
+theme_override_styles/hover = SubResource("StyleBoxFlat_d81f4")
+text = "Settings
+"
+
+[node name="Credit" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.494
+anchor_right = 0.5
+anchor_bottom = 0.494
+offset_left = -155.0
+offset_top = 301.888
+offset_right = 155.0
+offset_bottom = 327.888
+grow_horizontal = 2
+grow_vertical = 0
+text = "A demo by:    Seth. B,    Leo. G,   Simon. Å"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
