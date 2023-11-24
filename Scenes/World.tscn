@@ -155,7 +155,7 @@ offset_right = 704.0
 offset_bottom = 520.0
 text = "MAIN MENU"
 
-[node name="player" parent="." instance=ExtResource("1_lert0")]
+[node name="Player" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(72, 320)
 collision_layer = 5
 collision_mask = 5
@@ -170,7 +170,7 @@ speed = 1000.0
 [node name="Ball" parent="." instance=ExtResource("3_62d1g")]
 position = Vector2(576, 320)
 
-[connection signal="pauseSignal" from="." to="player" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Player" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
