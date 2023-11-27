@@ -4,3 +4,4 @@ res://Scenes/Paddle.tscn
 res://Scenes/Ball.tscn
 res://Scenes/UI.tscn
 res://Scenes/MainMenu.gd
+res://Scenes/Ball.gd

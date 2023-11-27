@@ -1,22 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5iy5pcb2xit3"]
+[gd_scene load_steps=7 format=3 uid="uid://b5iy5pcb2xit3"]
 
 [ext_resource type="Script" path="res://Scenes/Paddle.gd" id="1_yyuuv"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_wwu6y"]
+[ext_resource type="Texture2D" uid="uid://c5agg7oqbmhyc" path="res://Sprites/paddle.png" id="2_bxkmm"]
+[ext_resource type="Texture2D" uid="uid://dc84gbscri7rr" path="res://Sprites/paddletop.png" id="3_o42bi"]
+[ext_resource type="Texture2D" uid="uid://cuetvo4xbbywx" path="res://Sprites/paddlebottom.png" id="4_ak0el"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73suw"]
 size = Vector2(16, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuvxx"]
-size = Vector2(20, 132)
+size = Vector2(20, 128)
 
 [node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
 script = ExtResource("1_yyuuv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.0247495, -0.0126443)
-rotation = -1.5708
-scale = Vector2(0.558923, 0.0691016)
-texture = ExtResource("2_wwu6y")
+[node name="paddle" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.33333, 1)
+texture = ExtResource("2_bxkmm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -58)
+texture = ExtResource("3_o42bi")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, 58)
+texture = ExtResource("4_ak0el")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_73suw")

@@ -94,8 +94,8 @@ offset_right = 576.0
 offset_bottom = 327.888
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationContainer"]
-position = Vector2(576, 323)
-scale = Vector2(3.00926, 3.00926)
+position = Vector2(576, 324)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5lvoi")
 animation = &"StartMenu"
 frame_progress = 0.847486
