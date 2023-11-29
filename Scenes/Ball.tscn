@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://be80dbp2b6dxv"]
 
 [ext_resource type="Script" path="res://Scenes/Ball.gd" id="1_m8ubh"]
+[ext_resource type="Texture2D" uid="uid://b1g111l0kn165" path="res://Sprites/ball.png" id="2_d7m8d"]
 
 [sub_resource type="Gradient" id="Gradient_clj3s"]
 offsets = PackedFloat32Array(0.890323, 0.980645, 1)
@@ -24,8 +25,9 @@ script = ExtResource("1_m8ubh")
 speed = 600.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.98023e-08, 0)
-texture = SubResource("GradientTexture2D_ijpcb")
+position = Vector2(-9.53674e-07, -4.76837e-07)
+scale = Vector2(1.014, 1)
+texture = ExtResource("2_d7m8d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r81tx")
