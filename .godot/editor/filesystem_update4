@@ -1,7 +1,7 @@
+res://Scenes/MainMenu.tscn
 res://Scenes/World.tscn
-res://Scenes/World.gd
 res://Scenes/Paddle.tscn
 res://Scenes/Ball.tscn
-res://Scenes/MainMenu.tscn
+res://Scenes/UI.tscn
+res://Scenes/MainMenu.gd
 res://Scenes/Ball.gd
-res://Scenes/Paddle.gd
