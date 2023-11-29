@@ -18,24 +18,24 @@ func _on_bottom_body_entered(body):
 
 
 func _on_kanye_body_entered(body):
-	Main.p2_score += 1
-	$Control/Label2.text = str("x" + str(Main.p2_score))
+	Main.enemy_score += 1
+	$Control/Label2.text = str("x" + str(Main.enemy_score))
 	
 	await get_tree().create_timer(1).timeout
 	
 	$Ball.global_position = Vector2(screensize.x / 2, screensize.y / 2)
-	if Main.p2_score >= maxScore:
+	if Main.enemy_score >= maxScore:
 		$Control/Label3.text = ("Player 2 won")
 		pauseGame()
 
 func _on_left_body_entered(body):#!left
-	Main.p1_score += 1
-	$Control/Label.text = str("x" + str(Main.p1_score))
+	Main.player_score += 1
+	$Control/Label.text = str("x" + str(Main.player_score))
 	
 	await get_tree().create_timer(1).timeout
 	
 	$Ball.global_position = Vector2(screensize.x / 2, screensize.y / 2)
-	if Main.p1_score >= maxScore:
+	if Main.player_score >= maxScore:
 		$Control/Label3.text = ("Player 1 won")
 		pauseGame()
 	
@@ -48,12 +48,12 @@ func pauseGame():
 	pauseSignal.emit()
 
 func _on_play_again_pressed():
-	Main.p1_score = 0
-	Main.p2_score = 0
+	Main.player_score = 0
+	Main.enemy_score = 0
 	get_tree().change_scene_to_file("res://Scenes/World.tscn")
 
 
 func _on_main_menu_pressed():
-	Main.p1_score = 0
-	Main.p2_score = 0
+	Main.player_score = 0
+	Main.enemy_score = 0
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
