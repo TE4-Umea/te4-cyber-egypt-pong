@@ -35,7 +35,7 @@ func _physics_process(delta):
 func get_axis():
 	var ball_position = get_parent().get_node("Ball").position
 	
-	if bot_success < bot_fail && ball_position.x < screensize.x:
+	if bot_success < bot_fail && ball_position.x < position.x:
 		modulate.a = 1
 		if position.y < ball_position.y: return 1
 		elif position.y > ball_position.y: return -1

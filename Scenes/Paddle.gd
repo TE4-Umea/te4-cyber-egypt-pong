@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 300.0
+@export var speed : float = 1200.0
 var paused = false
 var max_bounce_angle = 0.5235987756 #30
 var recently_hit = false
