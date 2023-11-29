@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Main="*res://Scenes/Main.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 Player_UP={
