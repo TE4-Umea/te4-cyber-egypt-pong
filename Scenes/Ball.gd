@@ -7,8 +7,8 @@ func getFunction():
 	return position
 
 func _ready():
-	direction.y = [1, -1].pick_random()
-	direction.x = [1, -1].pick_random()
+	direction.y = randf_range(-1.0, 1.0)
+	direction.x = [-1].pick_random()
 
 func _physics_process(delta):
 	if !paused:
