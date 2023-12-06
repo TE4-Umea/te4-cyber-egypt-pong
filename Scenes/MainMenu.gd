@@ -16,3 +16,7 @@ func _ready():
 	
 	if !hasSave:
 		continue_button.hide()
+
+
+func _on_exit_button_down():
+	get_tree().quit()
