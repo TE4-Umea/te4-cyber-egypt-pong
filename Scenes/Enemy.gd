@@ -8,7 +8,8 @@ var screensize
 signal spawn_signal
 signal die_signal
 
-var enemy_health = 1
+var enemy_defence = 1
+var enemy_health = 3
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
@@ -17,8 +18,8 @@ func _ready():
 	spawn_signal.emit()
 
 func bot_reset():
-	enemy_health = rng.randi_range(1, 5)
-	print(enemy_health)
+	enemy_defence = rng.randi_range(1, 5)
+	print(enemy_defence)
 
 func bounce(body):
 	var collision : CollisionShape2D = $Area2D/CollisionShape2D
@@ -53,20 +54,20 @@ func _physics_process(delta):
 func get_axis():
 	var ball_position = get_parent().get_node("Ball").position
 	
-	if enemy_health > 0 && $paddle.is_visible_in_tree() == true:
+	if enemy_defence > 0 && $paddle.is_visible_in_tree() == true:
 		modulate.a = 1
 	else:
 		modulate.a = 0.25
 
-	if enemy_health > 0 && ball_position.x < position.x && $paddle.is_visible_in_tree() == true:
+	if enemy_defence > 0 && ball_position.x < position.x && $paddle.is_visible_in_tree() == true:
 		if position.y + (rng.randi_range(-40, 40)) < ball_position.y: return 1
 		elif position.y - (rng.randi_range(-40, 40))> ball_position.y: return -1
 
 
 func _on_area_2d_body_entered(body):
 	if $paddle.is_visible_in_tree() == true:
-		if enemy_health > 0:
-			enemy_health -= 1
+		if enemy_defence > 0:
+			enemy_defence -= 1
 			bounce(body)
 		else:
 			$paddle.hide()
@@ -81,7 +82,10 @@ func _on_recent_hit_timer_timeout():
 
 func _on_fail(body):
 	bot_reset()
-
+	enemy_health -= 1
+	if enemy_health <= 0:
+		$paddle.hide()
+		die_signal.emit()
 
 func _on_success(body):
 	bot_reset()
