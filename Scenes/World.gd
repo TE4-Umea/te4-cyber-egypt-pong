@@ -1,6 +1,7 @@
 extends Node
 var screensize
 @export var maxScore = 11
+var enemies = 0
 signal pauseSignal
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +25,7 @@ func _on_left_body_entered(body):
 	await get_tree().create_timer(1).timeout
 	
 	$Ball.global_position = Vector2(screensize.x / 2, screensize.y / 2)
-	if Main.health >= maxScore:
+	if Main.health <= 0:
 		$Control/Label3.text = ("You died :c")
 		pauseGame()
 
@@ -42,12 +43,23 @@ func pauseGame():
 	pauseSignal.emit()
 
 func _on_play_again_pressed():
-	Main.player_score = 0
 	Main.health = 5
 	get_tree().change_scene_to_file("res://Scenes/World.tscn")
 
 
 func _on_main_menu_pressed():
-	Main.player_score = 0
 	Main.health = 5
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+
+func _on_enemy_spawn_signal():
+	enemies += 1
+	print(enemies)
+
+
+func _on_enemy_die_signal():
+	enemies -= 1
+	if enemies == 0:
+		await get_tree().create_timer(0.5).timeout
+		$Control/Label3.text = ("You won :D")
+		pauseGame()
