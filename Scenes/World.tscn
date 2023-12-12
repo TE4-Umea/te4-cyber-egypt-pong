@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1jdun1b61cjp"]
+[gd_scene load_steps=13 format=3 uid="uid://d1jdun1b61cjp"]
 
 [ext_resource type="Script" path="res://Scenes/World.gd" id="1_i0ao4"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Paddle.tscn" id="1_lert0"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_cqfwg"]
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball.tscn" id="3_62d1g"]
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="4_sx57s"]
 
@@ -17,6 +16,24 @@ size = Vector2(16, 680)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0adeh"]
 size = Vector2(16, 680)
+
+[sub_resource type="Gradient" id="Gradient_rt32l"]
+offsets = PackedFloat32Array(0, 0.594059)
+colors = PackedColorArray(1, 0.133333, 0.592157, 1, 0, 0.0196078, 0.447059, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h1t6w"]
+gradient = SubResource("Gradient_rt32l")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_jseoe"]
+offsets = PackedFloat32Array(0, 0.465347, 1)
+colors = PackedColorArray(0.905882, 0, 0, 1, 0.999926, 0.43977, 0.40732, 1, 0.951332, 0.0315133, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpvk8"]
+gradient = SubResource("Gradient_jseoe")
+fill_from = Vector2(0.615854, 0.682927)
+fill_to = Vector2(0.445122, 0.487805)
 
 [node name="World" type="Node"]
 script = ExtResource("1_i0ao4")
@@ -79,7 +96,7 @@ z_index = -10
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("2_cqfwg")
+texture = SubResource("GradientTexture2D_h1t6w")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Control"]
@@ -99,7 +116,7 @@ offset_left = 40.0
 offset_top = 16.0
 offset_right = 80.0
 offset_bottom = 56.0
-texture = ExtResource("2_cqfwg")
+texture = SubResource("GradientTexture2D_lpvk8")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -133,6 +150,20 @@ offset_top = 456.0
 offset_right = 704.0
 offset_bottom = 520.0
 text = "MAIN MENU"
+
+[node name="ItemName" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 492.0
+offset_top = 22.0
+offset_right = 620.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "Item:
+"
+horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(72, 320)
