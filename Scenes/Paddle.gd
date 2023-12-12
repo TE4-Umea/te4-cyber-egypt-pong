@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
-
-@export var speed : float = 500.0
-@export var attack : float = 1
+var speed : float = 500
+var attack : float = 1
+var shot_speed = 1
 var rng = RandomNumberGenerator.new()
 var item_name
-var shot_speed = 1
 var paused = false
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
@@ -63,7 +62,7 @@ func random_start():
 			item_name.text = "Item: \nThe curse of Ra"
 
 func bounce(body):
-	var collision : CollisionShape2D = $Area2D/CollisionShape2D
+	var collision : CollisionShape2D = $"Area2D/CollisionShape2D"
 	var collision_height = collision.shape.get_rect().size.y
 	
 	var dist = (position.y - body.position.y)
@@ -84,7 +83,7 @@ func _on_area_2d_body_entered(body):
 	bounce(body)
 
 func _on_world_pause_signal():
-	paused = true
+	paused = !paused
 
 
 func _on_recent_hit_timer_timeout():

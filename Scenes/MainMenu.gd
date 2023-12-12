@@ -6,6 +6,7 @@ extends Control
 @onready var exit_button = $ExitButton
 @onready var settings_button = $SettingsButton
 
+
 var hasSave = false
 
 func _on_button_pressed():

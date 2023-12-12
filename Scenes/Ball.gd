@@ -28,4 +28,4 @@ func _physics_process(delta):
 
 
 func _on_world_pause_signal():
-	paused = true
+	paused = !paused

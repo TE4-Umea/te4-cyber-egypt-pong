@@ -1,6 +1,5 @@
 extends Node
 var screensize
-@export var maxScore = 11
 var enemies = 0
 signal pauseSignal
 
@@ -39,8 +38,23 @@ func pauseGame():
 	$Control/Label3.visible = true
 	$Control/PlayAgain.visible = true
 	$Control/MainMenu.visible = true
+	if Main.health > 0:
+		$Control/Continue.visible = true
 	$Ball.hide()
 	pauseSignal.emit()
+
+func _on_continue_pressed():
+	$Control/Label3.visible = false
+	$Control/PlayAgain.visible = false
+	$Control/MainMenu.visible = false
+	$Control/Continue.visible = false
+	$Ball.show()
+	$Player.random_start()
+	$Enemy.bot_reset()
+	$Enemy2.bot_reset()
+	$Ball.global_position = Vector2(screensize.x / 2, screensize.y / 2)
+	pauseSignal.emit()
+
 
 func _on_play_again_pressed():
 	Main.health = 5

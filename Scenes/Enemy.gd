@@ -9,17 +9,19 @@ signal spawn_signal
 signal die_signal
 
 var enemy_defence = rng.randi_range(5, 10)
-var enemy_health = 3
+var enemy_health
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
-	spawn_signal.emit()
+	bot_reset()
 
 func bot_reset():
 	enemy_defence = rng.randi_range(5, 10)
-	print(enemy_defence)
+	$paddle.show()
+	enemy_health = 3
+	spawn_signal.emit()
 
 func bounce(body):
 	var collision : CollisionShape2D = $Area2D/CollisionShape2D
@@ -69,21 +71,20 @@ func _on_area_2d_body_entered(body):
 		if enemy_defence > 0:
 			enemy_defence -= get_parent().get_node("Player").attack
 			bounce(body)
-			print(enemy_defence)
 		else:
 			$paddle.hide()
 			die_signal.emit()
 
 
 func _on_world_pause_signal():
-	paused = true
+	paused = !paused
 
 func _on_recent_hit_timer_timeout():
 	recently_hit = false
 
 func _on_fail(body):
 	if enemy_defence <= 0:
-		bot_reset()
+		enemy_defence = rng.randi_range(5, 10)
 		enemy_health -= 1
 	else:
 		enemy_defence -= get_parent().get_node("Player").attack
