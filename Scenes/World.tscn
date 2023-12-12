@@ -158,6 +158,7 @@ position = Vector2(576, 320)
 
 [connection signal="pauseSignal" from="." to="Player" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Enemy2" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
 [connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]

@@ -2,9 +2,15 @@ extends CharacterBody2D
 
 
 @export var speed : float = 500.0
+@export var attack : float = 1
+var rng = RandomNumberGenerator.new()
 var paused = false
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
+
+
+func _ready():
+	random_start()
 
 func _physics_process(delta):
 	var direction
@@ -20,6 +26,28 @@ func _physics_process(delta):
 func get_axis(up, down):
 	if Input.is_action_pressed(up): return -1
 	elif Input.is_action_pressed(down): return 1
+
+func random_start():
+	var choice = rng.randi_range(1, 6)
+	if choice == 1:
+		speed *= 2
+	elif choice == 2:
+		speed *= 0.6
+	elif choice == 3:
+		$".".transform.y *= 2
+	elif choice == 4:
+		$".".transform.y *= 0.5
+	elif choice == 5:
+		attack *= 2
+	else:
+		choice = rng.randi_range(1,5)
+		if choice == 1:
+			speed *= 2
+			$".".transform.y *= 4
+			attack *= 4
+		else:
+			$".".transform.y *= 0.1
+			attack *= 10
 
 func bounce(body):
 	var collision : CollisionShape2D = $Area2D/CollisionShape2D
