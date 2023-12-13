@@ -1,7 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://darcr8ymhfsa1"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
-[ext_resource type="Texture2D" uid="uid://bfjcevy25yrp8" path="res://Sprites/startmenu.png" id="3_uo5oj"]
+[ext_resource type="Texture2D" uid="uid://bfjcevy25yrp8" path="res://Sprites/startmenu.png" id="2_gq6k7"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3s4y"]
 atlas = ExtResource("3_uo5oj")
@@ -30,6 +31,7 @@ region = Rect2(0, 2160, 768, 432)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7dkj"]
 atlas = ExtResource("3_uo5oj")
 region = Rect2(0, 2592, 768, 432)
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lvoi"]
 animations = [{
@@ -193,3 +195,4 @@ grow_vertical = 0
 text = "A demo by:    Seth. B,    Leo. G,   Simon. Å"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="ExitButton" to="." method="_on_exit_button_down"]

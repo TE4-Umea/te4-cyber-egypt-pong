@@ -178,17 +178,17 @@ animations = [{
 [node name="World" type="Node"]
 script = ExtResource("1_i0ao4")
 
-[node name="Norr" type="Area2D" parent="."]
+[node name="Top" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Norr"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 position = Vector2(576, -8)
 shape = SubResource("RectangleShape2D_5vdgs")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Norr"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Top"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Norr/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top/StaticBody2D"]
 position = Vector2(576, -12)
 shape = SubResource("RectangleShape2D_5vdgs")
 
@@ -207,20 +207,20 @@ shape = SubResource("RectangleShape2D_22hlc")
 position = Vector2(576, -8)
 shape = SubResource("RectangleShape2D_22hlc")
 
-[node name="Kanye" type="Area2D" parent="."]
+[node name="Left" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kanye"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
 position = Vector2(-8, 324)
 shape = SubResource("RectangleShape2D_1kfys")
 
-[node name="!Left" type="Area2D" parent="."]
+[node name="Right" type="Area2D" parent="."]
 position = Vector2(1152, 0)
 collision_layer = 4
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="!Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 position = Vector2(8, 324)
 shape = SubResource("RectangleShape2D_0adeh")
 
@@ -231,6 +231,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
+
 [node name="Background" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(576, 324)
 sprite_frames = SubResource("SpriteFrames_qpvti")
@@ -240,6 +241,7 @@ animation = &"Background"
 position = Vector2(62, 53)
 sprite_frames = SubResource("SpriteFrames_vn2nu")
 frame_progress = 0.980173
+
 
 [node name="Label3" type="Label" parent="Control"]
 visible = false
@@ -283,14 +285,14 @@ position = Vector2(1080, 576)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("4_sx57s")
-speed = 1000.0
+speed = 250.0
 
 [node name="Enemy2" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(1048, 72)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("4_sx57s")
-speed = 1000.0
+speed = 250.0
 
 [node name="Ball" parent="." instance=ExtResource("3_62d1g")]
 position = Vector2(576, 325)
@@ -299,13 +301,13 @@ scale = Vector2(1.0014, 0.972397)
 [connection signal="pauseSignal" from="." to="Player" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
-[connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
-[connection signal="body_entered" from="Kanye" to="." method="_on_kanye_body_entered"]
-[connection signal="body_entered" from="Kanye" to="Enemy" method="_on_success"]
-[connection signal="body_entered" from="Kanye" to="Enemy2" method="_on_success"]
-[connection signal="body_entered" from="!Left" to="." method="_on_left_body_entered"]
-[connection signal="body_entered" from="!Left" to="Enemy" method="_on_fail"]
-[connection signal="body_entered" from="!Left" to="Enemy2" method="_on_fail"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Left" to="Enemy" method="_on_success"]
+[connection signal="body_entered" from="Left" to="Enemy2" method="_on_success"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="Right" to="Enemy" method="_on_fail"]
+[connection signal="body_entered" from="Right" to="Enemy2" method="_on_fail"]
 [connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]

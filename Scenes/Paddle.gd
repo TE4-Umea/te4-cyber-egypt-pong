@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 1200.0
+@export var speed : float = 500.0
 var paused = false
-var max_bounce_angle = 0.5235987756 #30
+var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
 func _ready():
@@ -24,20 +24,16 @@ func get_axis(up, down):
 	if Input.is_action_pressed(up): return -1
 	elif Input.is_action_pressed(down): return 1
 
-
-func _on_area_2d_body_entered(body):
-	var body_direction_x = body.direction.x
-	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
-	var body_height = body_collision.shape.get_rect().size.y
+func bounce(body):
 	var collision : CollisionShape2D = $Area2D/CollisionShape2D
 	var collision_height = collision.shape.get_rect().size.y
 	
-	var dist = (position.y+(collision_height/2)) - (body.position.y)
+	var dist = (position.y - body.position.y)
 	var normalizedDist = dist/(collision_height/2)
 	
 	var bounceAngle = -1 * normalizedDist * max_bounce_angle
 	var dir
-	if body_direction_x < 0:
+	if body.direction.x < 0:
 		dir = 1
 	else:
 		dir = -1
@@ -45,6 +41,9 @@ func _on_area_2d_body_entered(body):
 		body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
 		recently_hit = true
 		$RecentHitTimer.start()
+
+func _on_area_2d_body_entered(body):
+	bounce(body)
 
 func _on_world_pause_signal():
 	paused = true
