@@ -1,11 +1,15 @@
 extends Node
 var screensize
+
 var enemies = 0
+
 signal pauseSignal
+@onready var animated_sprite = $Control/Background
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
+	animated_sprite.play("Background")
 
 func _on_top_body_entered(body):
 	if !body.is_in_group('paddles'):
@@ -15,6 +19,7 @@ func _on_top_body_entered(body):
 func _on_bottom_body_entered(body):
 	if !body.is_in_group('paddles'):
 		body.direction.y *= -1
+
 
 
 func _on_left_body_entered(body):

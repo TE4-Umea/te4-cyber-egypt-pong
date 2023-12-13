@@ -9,10 +9,10 @@ var paused = false
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
-
 func _ready():
 	item_name = get_parent().get_node("Control/ItemName")
 	random_start()
+	$Paddle.play("Idle")
 
 func _physics_process(delta):
 	var direction
