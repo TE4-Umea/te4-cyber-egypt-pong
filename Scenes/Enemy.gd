@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 1000.0
 var paused = false
 var rng = RandomNumberGenerator.new()
+var screensize
 
 var bot_fail = rng.randi_range(1, 5)
 var bot_success = 0
@@ -11,6 +12,7 @@ var size = null
 var vulnerable_state = null
 
 func _ready():
+	screensize = get_viewport().get_visible_rect().size
 	size = $"."
 	vulnerable_state = $Sprite2D
 
@@ -33,14 +35,12 @@ func _physics_process(delta):
 func get_axis():
 	var ball_position = get_parent().get_node("Ball").position
 	
-	if bot_success < bot_fail:
+	if bot_success < bot_fail && ball_position.x < position.x:
 		modulate.a = 1
 		if position.y < ball_position.y: return 1
 		elif position.y > ball_position.y: return -1
 	else:
-		modulate.a = 0.5
-		if position.y < ball_position.y: return 1
-		elif position.y > ball_position.y: return -1
+		modulate.a = 0.25
 
 
 func _on_area_2d_body_entered(body):

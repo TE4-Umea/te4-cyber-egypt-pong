@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="4_sx57s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
-size = Vector2(1184, 16)
+size = Vector2(1184, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22hlc"]
 size = Vector2(1184, 16)
@@ -189,7 +189,7 @@ shape = SubResource("RectangleShape2D_5vdgs")
 [node name="StaticBody2D" type="StaticBody2D" parent="Norr"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Norr/StaticBody2D"]
-position = Vector2(576, -8)
+position = Vector2(576, -12)
 shape = SubResource("RectangleShape2D_5vdgs")
 
 [node name="Bottom" type="Area2D" parent="."]
