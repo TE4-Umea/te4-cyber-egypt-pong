@@ -1,9 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5iy5pcb2xit3"]
+[gd_scene load_steps=10 format=3 uid="uid://b5iy5pcb2xit3"]
 
 [ext_resource type="Script" path="res://Scenes/Paddle.gd" id="1_yyuuv"]
 [ext_resource type="Texture2D" uid="uid://c5agg7oqbmhyc" path="res://Sprites/paddle.png" id="2_maaxx"]
 [ext_resource type="Texture2D" uid="uid://dc84gbscri7rr" path="res://Sprites/paddletop.png" id="3_tv01i"]
 [ext_resource type="Texture2D" uid="uid://cuetvo4xbbywx" path="res://Sprites/paddlebottom.png" id="4_dejw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71oux"]
+atlas = ExtResource("2_bxkmm")
+region = Rect2(12, 0, 12, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8s4r"]
+atlas = ExtResource("2_bxkmm")
+region = Rect2(0, 0, 12, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtk3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71oux")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8s4r")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73suw"]
 size = Vector2(16, 128)
@@ -14,9 +41,11 @@ size = Vector2(20, 128)
 [node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
 script = ExtResource("1_yyuuv")
 
-[node name="paddle" type="Sprite2D" parent="."]
-scale = Vector2(1.33333, 1)
-texture = ExtResource("2_maaxx")
+
+[node name="Paddle" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jtk3d")
+animation = &"Hit"
+
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, -56)
