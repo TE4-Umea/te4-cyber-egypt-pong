@@ -1,23 +1,25 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 250.0
+@export var speed : float = 350.0
 var paused = false
 var rng = RandomNumberGenerator.new()
 var screensize
+signal spawn_signal
+signal die_signal
 
-var bot_fail = rng.randi_range(1, 5)
-var bot_success = 0
+var enemy_defence = 1
+var enemy_health = 3
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
+	spawn_signal.emit()
 
 func bot_reset():
-	bot_fail = rng.randi_range(1, 5)
-	bot_success = 0
-	print(bot_fail)
+	enemy_defence = rng.randi_range(1, 5)
+	print(enemy_defence)
 
 func bounce(body):
 	var collision : CollisionShape2D = $Area2D/CollisionShape2D
@@ -52,20 +54,24 @@ func _physics_process(delta):
 func get_axis():
 	var ball_position = get_parent().get_node("Ball").position
 	
-	if bot_success < bot_fail:
+	if enemy_defence > 0 && $paddle.is_visible_in_tree() == true:
 		modulate.a = 1
 	else:
 		modulate.a = 0.25
 
-	if bot_success < bot_fail && ball_position.x < position.x:
-		if position.y < ball_position.y: return 1
-		elif position.y > ball_position.y: return -1
+	if enemy_defence > 0 && ball_position.x < position.x && $paddle.is_visible_in_tree() == true:
+		if position.y + (rng.randi_range(-40, 40)) < ball_position.y: return 1
+		elif position.y - (rng.randi_range(-40, 40))> ball_position.y: return -1
 
 
 func _on_area_2d_body_entered(body):
-	if bot_success < bot_fail:
-		bot_success += 1
-		bounce(body)
+	if $paddle.is_visible_in_tree() == true:
+		if enemy_defence > 0:
+			enemy_defence -= 1
+			bounce(body)
+		else:
+			$paddle.hide()
+			die_signal.emit()
 
 
 func _on_world_pause_signal():
@@ -76,7 +82,10 @@ func _on_recent_hit_timer_timeout():
 
 func _on_fail(body):
 	bot_reset()
-
+	enemy_health -= 1
+	if enemy_health <= 0:
+		$paddle.hide()
+		die_signal.emit()
 
 func _on_success(body):
 	bot_reset()
