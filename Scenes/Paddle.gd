@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var speed : float = 300.0
 var paused = false
 
+func _ready():
+	$Paddle.play("Idle")
+
 func _physics_process(delta):
 	var direction
 	if !paused:

@@ -3,57 +3,57 @@
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
 [ext_resource type="Texture2D" uid="uid://bfjcevy25yrp8" path="res://Sprites/startmenu.png" id="3_uo5oj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aiqy3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3s4y"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 0, 384, 216)
+region = Rect2(0, 0, 768, 432)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jv2bu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wnqp"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 216, 384, 216)
+region = Rect2(0, 432, 768, 432)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qavay"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lcx0"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 432, 384, 216)
+region = Rect2(0, 864, 768, 432)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxxji"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhq7b"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 648, 384, 216)
+region = Rect2(0, 1296, 768, 432)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w25mi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_klb3h"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 864, 384, 216)
+region = Rect2(0, 1728, 768, 432)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1014m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ec6t"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 1080, 384, 216)
+region = Rect2(0, 2160, 768, 432)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ip2jr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7dkj"]
 atlas = ExtResource("3_uo5oj")
-region = Rect2(0, 1296, 384, 216)
+region = Rect2(0, 2592, 768, 432)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lvoi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aiqy3")
+"texture": SubResource("AtlasTexture_v3s4y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jv2bu")
+"texture": SubResource("AtlasTexture_2wnqp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qavay")
+"texture": SubResource("AtlasTexture_2lcx0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kxxji")
+"texture": SubResource("AtlasTexture_rhq7b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w25mi")
+"texture": SubResource("AtlasTexture_klb3h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1014m")
+"texture": SubResource("AtlasTexture_8ec6t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ip2jr")
+"texture": SubResource("AtlasTexture_j7dkj")
 }],
 "loop": true,
 "name": &"StartMenu",
@@ -95,7 +95,7 @@ offset_bottom = 327.888
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationContainer"]
 position = Vector2(576, 324)
-scale = Vector2(3, 3)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5lvoi")
 animation = &"StartMenu"
 frame_progress = 0.847486

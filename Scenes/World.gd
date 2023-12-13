@@ -1,11 +1,13 @@
 extends Node
 var screensize
-@export var maxScore = 11
+@export var maxScore = 1
 signal pauseSignal
+@onready var animated_sprite = $Control/Background
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
+	animated_sprite.play("Background")
 
 func _on_norr_body_entered(body):
 	if !body.is_in_group('paddles'):
@@ -19,7 +21,6 @@ func _on_bottom_body_entered(body):
 
 func _on_kanye_body_entered(body):
 	Main.enemy_score += 1
-	$Control/Label2.text = str("x" + str(Main.enemy_score))
 	
 	await get_tree().create_timer(1).timeout
 	
@@ -30,7 +31,6 @@ func _on_kanye_body_entered(body):
 
 func _on_left_body_entered(body):#!left
 	Main.player_score += 1
-	$Control/Label.text = str("x" + str(Main.player_score))
 	
 	await get_tree().create_timer(1).timeout
 	
