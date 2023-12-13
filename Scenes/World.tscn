@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=33 format=3 uid="uid://d1jdun1b61cjp"]
 
 [ext_resource type="Script" path="res://Scenes/World.gd" id="1_i0ao4"]
@@ -18,6 +19,7 @@ size = Vector2(16, 680)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0adeh"]
 size = Vector2(16, 680)
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vx8tj"]
 atlas = ExtResource("2_5nr6a")
@@ -175,6 +177,7 @@ animations = [{
 "speed": 5.0
 }]
 
+
 [node name="World" type="Node"]
 script = ExtResource("1_i0ao4")
 
@@ -231,7 +234,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-
 [node name="Background" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(576, 324)
 sprite_frames = SubResource("SpriteFrames_qpvti")
@@ -241,7 +243,6 @@ animation = &"Background"
 position = Vector2(62, 53)
 sprite_frames = SubResource("SpriteFrames_vn2nu")
 frame_progress = 0.980173
-
 
 [node name="Label3" type="Label" parent="Control"]
 visible = false
@@ -257,23 +258,46 @@ text = "Winner"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Continue" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 368.0
+offset_right = 704.0
+offset_bottom = 432.0
+text = "CONTINUE"
+
 [node name="PlayAgain" type="Button" parent="Control"]
 visible = false
 layout_mode = 0
 offset_left = 448.0
-offset_top = 384.0
+offset_top = 448.0
 offset_right = 704.0
-offset_bottom = 448.0
+offset_bottom = 512.0
 text = "PLAY AGAIN"
 
 [node name="MainMenu" type="Button" parent="Control"]
 visible = false
 layout_mode = 0
 offset_left = 448.0
-offset_top = 456.0
+offset_top = 520.0
 offset_right = 704.0
-offset_bottom = 520.0
+offset_bottom = 584.0
 text = "MAIN MENU"
+
+[node name="ItemName" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 492.0
+offset_top = 22.0
+offset_right = 620.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "Item:
+"
+horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(72, 320)
@@ -300,6 +324,7 @@ scale = Vector2(1.0014, 0.972397)
 
 [connection signal="pauseSignal" from="." to="Player" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Enemy2" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
 [connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
@@ -309,6 +334,7 @@ scale = Vector2(1.0014, 0.972397)
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
 [connection signal="body_entered" from="Right" to="Enemy" method="_on_fail"]
 [connection signal="body_entered" from="Right" to="Enemy2" method="_on_fail"]
+[connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="die_signal" from="Enemy" to="." method="_on_enemy_die_signal"]
