@@ -24,7 +24,7 @@ func _on_bottom_body_entered(body):
 
 func _on_left_body_entered(body):
 	Main.health -= 1
-	$Control/Label.text = str("x" + str(Main.health))
+	$Control/Label.text = "x" + str(Main.health)
 	
 	await get_tree().create_timer(1).timeout
 	
