@@ -41,7 +41,9 @@ func random_start():
 		speed *= 0.6
 		item_name.text = "Item: \nSnail"
 	elif choice == 3:
+		print($".".transform.y)
 		$".".transform.y *= 2
+		print($".".transform.y)
 		item_name.text = "Item: \nThe Long Boi"
 	elif choice == 4:
 		$".".transform.y *= 0.5
@@ -59,9 +61,15 @@ func random_start():
 			attack *= 4
 			item_name.text = "Item: \n Ra's Might"
 		else:
+			print($".".transform.y)
 			$".".transform.y *= 0.05
+			print($".".transform.y)
 			attack *= 10
 			item_name.text = "Item: \nThe curse of Ra"
+	if $".".transform.y > Vector2(0,3):
+		$".".transform.y = Vector2(0,3)
+	elif $".".transform.y < Vector2(0,0.01):
+		$".".transform.y = Vector2(0,0.01)
 
 func bounce(body):
 	var collision : CollisionShape2D = $"Area2D/CollisionShape2D"
