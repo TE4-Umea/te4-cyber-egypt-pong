@@ -2,12 +2,14 @@ extends Node
 var screensize
 
 var enemies = 0
+var wins
 
 signal pauseSignal
 @onready var animated_sprite = $Control/Background
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	wins = 0
 	screensize = get_viewport().get_visible_rect().size
 	animated_sprite.play("Background")
 
@@ -45,6 +47,9 @@ func pauseGame():
 	$Control/MainMenu.visible = true
 	if Main.health > 0:
 		$Control/Continue.visible = true
+	else:
+		$Control/Score.visible = true
+		$Control/Score.text = ("You Survived " + str(wins) + " time(s)")
 	$Ball.hide()
 	pauseSignal.emit()
 
@@ -82,4 +87,5 @@ func _on_enemy_die_signal():
 	if enemies == 0:
 		await get_tree().create_timer(0.5).timeout
 		$Control/Label3.text = ("You won :D")
+		wins += 1
 		pauseGame()

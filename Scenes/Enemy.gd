@@ -12,12 +12,14 @@ var enemy_defence = rng.randi_range(5, 10)
 var enemy_health
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
+var infiniteHitFix = 0
 
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
 	bot_reset()
 
 func bot_reset():
+	position.x = rng.randi_range(screensize.x/2, screensize.x)
 	enemy_defence = rng.randi_range(5, 10)
 	$Paddle.show()
 	enemy_health = 3
@@ -67,7 +69,8 @@ func get_axis():
 
 
 func _on_area_2d_body_entered(body):
-	if $Paddle.is_visible_in_tree() == true:
+	if $Paddle.is_visible_in_tree() == true && infiniteHitFix < 15:
+		infiniteHitFix += 1
 		enemy_defence -= get_parent().get_node("Player").attack
 		bounce(body)
 
@@ -93,3 +96,7 @@ func _on_fail(body):
 
 func _on_success(body):
 	pass
+
+
+func _on_player_hit():
+	infiniteHitFix = 0

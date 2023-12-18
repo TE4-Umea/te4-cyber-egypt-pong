@@ -9,6 +9,8 @@ var paused = false
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
+signal hit
+
 func _ready():
 	item_name = get_parent().get_node("Control/ItemName")
 	random_start()
@@ -81,6 +83,7 @@ func bounce(body):
 
 func _on_area_2d_body_entered(body):
 	bounce(body)
+	hit.emit()
 
 func _on_world_pause_signal():
 	paused = !paused
