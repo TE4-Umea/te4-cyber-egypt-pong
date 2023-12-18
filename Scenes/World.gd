@@ -24,7 +24,7 @@ func _on_bottom_body_entered(body):
 
 func _on_left_body_entered(body):
 	Main.health -= 1
-	$Control/Label.text = str("x" + str(Main.health))
+	$Control/PlayerHealth.set_frame_and_progress(5-Main.health,5-Main.health)
 	
 	await get_tree().create_timer(1).timeout
 	
@@ -72,6 +72,7 @@ func _on_main_menu_pressed():
 
 
 func _on_enemy_spawn_signal():
+	print(enemies)
 	enemies += 1
 	print(enemies)
 
