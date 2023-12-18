@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b5iy5pcb2xit3"]
 
 [ext_resource type="Script" path="res://Scenes/Paddle.gd" id="1_yyuuv"]
-[ext_resource type="Texture2D" uid="uid://c5agg7oqbmhyc" path="res://Sprites/paddle.png" id="2_maaxx"]
+[ext_resource type="Texture2D" uid="uid://c5agg7oqbmhyc" path="res://Sprites/paddle.png" id="2_bxkmm"]
 [ext_resource type="Texture2D" uid="uid://dc84gbscri7rr" path="res://Sprites/paddletop.png" id="3_tv01i"]
 [ext_resource type="Texture2D" uid="uid://cuetvo4xbbywx" path="res://Sprites/paddlebottom.png" id="4_dejw6"]
 
@@ -41,11 +41,9 @@ size = Vector2(20, 128)
 [node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
 script = ExtResource("1_yyuuv")
 
-
 [node name="Paddle" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jtk3d")
 animation = &"Hit"
-
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, -56)

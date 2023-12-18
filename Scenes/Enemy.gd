@@ -19,7 +19,7 @@ func _ready():
 
 func bot_reset():
 	enemy_defence = rng.randi_range(5, 10)
-	$paddle.show()
+	$Paddle.show()
 	enemy_health = 3
 	spawn_signal.emit()
 
@@ -56,24 +56,20 @@ func _physics_process(delta):
 func get_axis():
 	var ball_position = get_parent().get_node("Ball").position
 	
-	if enemy_defence > 0 && $paddle.is_visible_in_tree() == true:
+	if enemy_defence > 0 && $Paddle.is_visible_in_tree() == true:
 		modulate.a = 1
 	else:
 		modulate.a = 0.25
 
-	if enemy_defence > 0 && ball_position.x < position.x && $paddle.is_visible_in_tree() == true:
+	if enemy_defence > 0 && ball_position.x < position.x && $Paddle.is_visible_in_tree() == true:
 		if position.y + (rng.randi_range(-40, 40)) < ball_position.y: return 1
 		elif position.y - (rng.randi_range(-40, 40))> ball_position.y: return -1
 
 
 func _on_area_2d_body_entered(body):
-	if $paddle.is_visible_in_tree() == true:
-		if enemy_defence > 0:
-			enemy_defence -= get_parent().get_node("Player").attack
-			bounce(body)
-		else:
-			$paddle.hide()
-			die_signal.emit()
+	if $Paddle.is_visible_in_tree() == true:
+		enemy_defence -= get_parent().get_node("Player").attack
+		bounce(body)
 
 
 func _on_world_pause_signal():
@@ -83,14 +79,16 @@ func _on_recent_hit_timer_timeout():
 	recently_hit = false
 
 func _on_fail(body):
-	if enemy_defence <= 0:
-		enemy_defence = rng.randi_range(5, 10)
-		enemy_health -= 1
+	if enemy_defence <= 0 && $Paddle.is_visible_in_tree() == true:
+		$Paddle.hide()
+		die_signal.emit()
+		#enemy_defence = rng.randi_range(5, 10)
+		#enemy_health -= 1
 	else:
 		enemy_defence -= get_parent().get_node("Player").attack
 	
-	if enemy_health <= 0:
-		$paddle.hide()
+	if enemy_health <= 0 && $Paddle.is_visible_in_tree() == true:
+		$Paddle.hide()
 		die_signal.emit()
 
 func _on_success(body):
