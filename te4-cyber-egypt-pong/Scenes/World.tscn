@@ -1,0 +1,384 @@
+[gd_scene load_steps=34 format=3 uid="uid://d1jdun1b61cjp"]
+
+[ext_resource type="Script" path="res://Scenes/World.gd" id="1_i0ao4"]
+[ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Paddle.tscn" id="1_lert0"]
+[ext_resource type="Texture2D" uid="uid://d3dqp6n4re77a" path="res://Sprites/Background.png" id="2_5nr6a"]
+[ext_resource type="Texture2D" uid="uid://bifj3cgqjm4fh" path="res://Sprites/life.png" id="3_4ihvs"]
+[ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball.tscn" id="3_62d1g"]
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="4_sx57s"]
+[ext_resource type="Script" path="res://Scenes/ItemControl.gd" id="7_uya14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
+size = Vector2(1184, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22hlc"]
+size = Vector2(1184, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kfys"]
+size = Vector2(16, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0adeh"]
+size = Vector2(16, 680)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx8tj"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acaep"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egd7o"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 648, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpdss"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 648, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgnnl"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 1296, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abimu"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 1296, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7t24"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 1944, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28qkj"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 1944, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jlh8"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 2592, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk3of"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 2592, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndcm1"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 3240, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1h4m"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 3240, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efb4t"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(0, 3888, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm175"]
+atlas = ExtResource("2_5nr6a")
+region = Rect2(1152, 3888, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpvti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx8tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acaep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egd7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpdss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgnnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abimu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7t24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28qkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jlh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk3of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndcm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1h4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efb4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm175")
+}],
+"loop": true,
+"name": &"Background",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfbt4"]
+atlas = ExtResource("3_4ihvs")
+region = Rect2(0, 0, 60, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80sxq"]
+atlas = ExtResource("3_4ihvs")
+region = Rect2(60, 0, 60, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv5bv"]
+atlas = ExtResource("3_4ihvs")
+region = Rect2(0, 42, 60, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i37gp"]
+atlas = ExtResource("3_4ihvs")
+region = Rect2(60, 42, 60, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60g3n"]
+atlas = ExtResource("3_4ihvs")
+region = Rect2(0, 84, 60, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf22a"]
+atlas = ExtResource("3_4ihvs")
+region = Rect2(60, 84, 60, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vn2nu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfbt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80sxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv5bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i37gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60g3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf22a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="World" type="Node"]
+script = ExtResource("1_i0ao4")
+
+[node name="Top" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(576, -8)
+shape = SubResource("RectangleShape2D_5vdgs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Top"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top/StaticBody2D"]
+position = Vector2(576, -12)
+shape = SubResource("RectangleShape2D_5vdgs")
+
+[node name="Bottom" type="Area2D" parent="."]
+position = Vector2(0, 664)
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(576, -8)
+shape = SubResource("RectangleShape2D_22hlc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/StaticBody2D"]
+position = Vector2(576, -8)
+shape = SubResource("RectangleShape2D_22hlc")
+
+[node name="Left" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-8, 324)
+shape = SubResource("RectangleShape2D_1kfys")
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(1152, 0)
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(8, 324)
+shape = SubResource("RectangleShape2D_0adeh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(576, 324)
+sprite_frames = SubResource("SpriteFrames_qpvti")
+animation = &"Background"
+
+[node name="PlayerHealth" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(62, 53)
+sprite_frames = SubResource("SpriteFrames_vn2nu")
+frame_progress = 0.980173
+
+[node name="Label3" type="Label" parent="Control"]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 448.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "Winner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 368.0
+offset_right = 704.0
+offset_bottom = 432.0
+text = "CONTINUE"
+
+[node name="PlayAgain" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 448.0
+offset_right = 704.0
+offset_bottom = 512.0
+text = "PLAY AGAIN"
+
+[node name="MainMenu" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 520.0
+offset_right = 704.0
+offset_bottom = 584.0
+text = "MAIN MENU"
+
+[node name="ItemName" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1004.0
+offset_right = 1132.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Item:
+"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("1_lert0")]
+position = Vector2(72, 320)
+collision_layer = 5
+collision_mask = 5
+
+[node name="Enemy" parent="." groups=["enemies"] instance=ExtResource("1_lert0")]
+position = Vector2(1080, 576)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("4_sx57s")
+speed = 350.0
+
+[node name="Enemy2" parent="." instance=ExtResource("1_lert0")]
+position = Vector2(1048, 72)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("4_sx57s")
+speed = 350.0
+
+[node name="Ball" parent="." instance=ExtResource("3_62d1g")]
+position = Vector2(576, 324)
+scale = Vector2(1.0014, 0.972397)
+
+[node name="ItemControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_uya14")
+
+[node name="Opt 1" type="Button" parent="ItemControl"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 328.0
+offset_right = 552.0
+offset_bottom = 416.0
+text = "Ghazghkull Mag Uruk Thraka"
+
+[node name="Opt 2" type="Button" parent="ItemControl"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 328.0
+offset_right = 896.0
+offset_bottom = 416.0
+
+[node name="Select Button" type="Button" parent="ItemControl"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 480.0
+offset_right = 640.0
+offset_bottom = 512.0
+text = "Select"
+
+[node name="Opt Info Panel" type="Label" parent="ItemControl"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 768.0
+offset_bottom = 320.0
+horizontal_alignment = 1
+
+[connection signal="pauseSignal" from="." to="Player" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Enemy2" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Left" to="Enemy" method="_on_success"]
+[connection signal="body_entered" from="Left" to="Enemy2" method="_on_success"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="Right" to="Enemy" method="_on_fail"]
+[connection signal="body_entered" from="Right" to="Enemy2" method="_on_fail"]
+[connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="itemSignal" from="Player" to="." method="_on_player_item_signal"]
+[connection signal="itemSignal" from="Player" to="ItemControl" method="_on_player_item_signal"]
+[connection signal="die_signal" from="Enemy" to="." method="_on_enemy_die_signal"]
+[connection signal="spawn_signal" from="Enemy" to="." method="_on_enemy_spawn_signal"]
+[connection signal="die_signal" from="Enemy2" to="." method="_on_enemy_die_signal"]
+[connection signal="spawn_signal" from="Enemy2" to="." method="_on_enemy_spawn_signal"]
+[connection signal="goSignal" from="ItemControl" to="Player" method="_on_item_control_go_signal"]
+[connection signal="pressed" from="ItemControl/Opt 1" to="ItemControl" method="_on_opt_1_pressed"]
+[connection signal="pressed" from="ItemControl/Opt 2" to="ItemControl" method="_on_opt_2_pressed"]
+[connection signal="pressed" from="ItemControl/Select Button" to="ItemControl" method="_on_select_button_pressed"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4nuo3d75aepi"]
+
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="1_ykh6l"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -10
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ykh6l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 184.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "x 0"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "x 0"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 56.0
+texture = ExtResource("1_ykh6l")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 16.0
+offset_right = 1088.0
+offset_bottom = 56.0
+texture = ExtResource("1_ykh6l")
+expand_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 60
+text = "Winner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+text = "PLAY AGAIN"
+
+[node name="MainMenu" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 456.0
+offset_right = 704.0
+offset_bottom = 520.0
+text = "MAIN MENU"
