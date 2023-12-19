@@ -1,23 +1,27 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 250.0
+@export var speed : float = 350.0
 var paused = false
 var rng = RandomNumberGenerator.new()
 var screensize
+signal spawn_signal
+signal die_signal
 
-var bot_fail = rng.randi_range(1, 5)
-var bot_success = 0
+var enemy_defence = rng.randi_range(5, 10)
+var enemy_health
 var max_bounce_angle = 5*PI/24
 var recently_hit = false
 
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
+	bot_reset()
 
 func bot_reset():
-	bot_fail = rng.randi_range(1, 5)
-	bot_success = 0
-	print(bot_fail)
+	enemy_defence = rng.randi_range(5, 10)
+	$Paddle.show()
+	enemy_health = 3
+	spawn_signal.emit()
 
 func bounce(body):
 	var collision : CollisionShape2D = $Area2D/CollisionShape2D
@@ -52,31 +56,40 @@ func _physics_process(delta):
 func get_axis():
 	var ball_position = get_parent().get_node("Ball").position
 	
-	if bot_success < bot_fail:
+	if enemy_defence > 0 && $Paddle.is_visible_in_tree() == true:
 		modulate.a = 1
 	else:
 		modulate.a = 0.25
 
-	if bot_success < bot_fail && ball_position.x < position.x:
-		if position.y < ball_position.y: return 1
-		elif position.y > ball_position.y: return -1
+	if enemy_defence > 0 && ball_position.x < position.x && $Paddle.is_visible_in_tree() == true:
+		if position.y + (rng.randi_range(-40, 40)) < ball_position.y: return 1
+		elif position.y - (rng.randi_range(-40, 40))> ball_position.y: return -1
 
 
 func _on_area_2d_body_entered(body):
-	if bot_success < bot_fail:
-		bot_success += 1
+	if $Paddle.is_visible_in_tree() == true:
+		enemy_defence -= get_parent().get_node("Player").attack
 		bounce(body)
 
 
 func _on_world_pause_signal():
-	paused = true
+	paused = !paused
 
 func _on_recent_hit_timer_timeout():
 	recently_hit = false
 
 func _on_fail(body):
-	bot_reset()
-
+	if enemy_defence <= 0 && $Paddle.is_visible_in_tree() == true:
+		$Paddle.hide()
+		die_signal.emit()
+		#enemy_defence = rng.randi_range(5, 10)
+		#enemy_health -= 1
+	else:
+		enemy_defence -= get_parent().get_node("Player").attack
+	
+	if enemy_health <= 0 && $Paddle.is_visible_in_tree() == true:
+		$Paddle.hide()
+		die_signal.emit()
 
 func _on_success(body):
-	bot_reset()
+	pass

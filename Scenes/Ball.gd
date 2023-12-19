@@ -23,9 +23,7 @@ func _physics_process(delta):
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, speed)
 		move_and_slide()
-		if position.y > screensize.y:
-			print(position.y)
 
 
 func _on_world_pause_signal():
-	paused = true
+	paused = !paused
