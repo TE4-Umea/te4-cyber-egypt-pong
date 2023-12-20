@@ -9,7 +9,7 @@ func getFunction():
 
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
-	direction.y = randf_range(-1.0, 1.0)
+	direction.y = 0
 	direction.x = -1
 
 func _process(delta):
