@@ -54,11 +54,11 @@ func _on_continue_pressed():
 	$Control/MainMenu.visible = false
 	$Control/Continue.visible = false
 	$Ball.show()
-	$Player.itemSelect()
 	$Enemy.bot_reset()
 	$Enemy2.bot_reset()
 	$Ball.global_position = Vector2(screensize.x / 2, screensize.y / 2)
 	pauseSignal.emit()
+	$Player.itemSelect()
 
 
 func _on_play_again_pressed():
