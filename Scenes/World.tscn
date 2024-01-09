@@ -288,13 +288,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 1004.0
+offset_left = 780.0
 offset_right = 1132.0
-offset_bottom = 42.0
+offset_bottom = 104.0
 grow_horizontal = 2
-text = "Item:
+text = "Items: 
 "
-horizontal_alignment = 1
+horizontal_alignment = 2
+autowrap_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(72, 320)
@@ -332,7 +333,7 @@ offset_left = 256.0
 offset_top = 328.0
 offset_right = 552.0
 offset_bottom = 416.0
-text = "Ghazghkull Mag Uruk Thraka"
+text = "We"
 
 [node name="Opt 2" type="Button" parent="ItemControl"]
 layout_mode = 0
@@ -340,6 +341,7 @@ offset_left = 600.0
 offset_top = 328.0
 offset_right = 896.0
 offset_bottom = 416.0
+text = "Broken"
 
 [node name="Select Button" type="Button" parent="ItemControl"]
 layout_mode = 0
@@ -356,6 +358,8 @@ offset_top = 64.0
 offset_right = 768.0
 offset_bottom = 320.0
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pauseSignal" from="." to="Player" method="_on_world_pause_signal"]
 [connection signal="pauseSignal" from="." to="Enemy" method="_on_world_pause_signal"]
