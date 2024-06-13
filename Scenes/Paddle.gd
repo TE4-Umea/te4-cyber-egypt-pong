@@ -62,6 +62,12 @@ func random_start():
 			$".".transform.y *= 0.05
 			attack *= 10
 			item_name.text = "Item: \nThe curse of Ra"
+	if $".".transform.y > Vector2(0,3):
+		$".".transform.y = Vector2(0,3)
+	elif $".".transform.y < Vector2(0,0.01):
+		$".".transform.y = Vector2(0,0.01)
+	if shot_speed > 5:
+		shot_speed = 5
 
 func bounce(body):
 	var collision : CollisionShape2D = $"Area2D/CollisionShape2D"

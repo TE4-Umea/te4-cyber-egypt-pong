@@ -63,6 +63,7 @@ func _on_continue_pressed():
 	$Enemy.bot_reset()
 	$Enemy2.bot_reset()
 	$Ball.global_position = Vector2(screensize.x / 2, screensize.y / 2)
+	$Ball.direction.y = ($Player.position.y - screensize.y/2)/(screensize.y/2)
 	pauseSignal.emit()
 
 

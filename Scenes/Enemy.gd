@@ -19,7 +19,7 @@ func _ready():
 	bot_reset()
 
 func bot_reset():
-	position.x = rng.randi_range(screensize.x/2, screensize.x)
+	position.x = rng.randi_range(screensize.x/2, screensize.x-20)
 	enemy_defence = rng.randi_range(5, 10)
 	$Paddle.show()
 	enemy_health = 3
